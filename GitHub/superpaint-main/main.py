@@ -14,3 +14,5 @@ app = QtWidgets.QApplication(sys.argv)
 ventana = Ventana()
 ventana.show()
 sys.exit(app.exec())
+
+#cd C:\Users\jesus\Documents\GitHub\superPaint\GitHub\superpaint-main >> python main.py
