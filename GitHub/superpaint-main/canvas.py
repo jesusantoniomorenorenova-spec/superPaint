@@ -110,11 +110,73 @@ class Canvas(QWidget):
             for x in range(0,div):
                 painter.drawLine(mid_w,div*x, (mid_w+ (div*x )),mid_h)
                 painter.drawLine(mid_w,div*x, (mid_w- (div*x)),mid_h)
-                painter.drawLine(mid_w,div*x, (mid_h+ (div*x)),mid_w)
+                painter.drawLine(mid_w, h - (div*x), (mid_w + (div*x)), mid_h)
+                painter.drawLine(mid_w, h - (div*x), (mid_w - (div*x)), mid_h)
+
+                
+                
+               
+                
+
+                
                 
         self.update()
 
     def draw_flor(self, value):
+        self.clear()
+        with QPainter(self.image) as painter:
+            painter.setPen(QPen(QColor("#ff00000"),1,Qt.PenStyle.SolidLine,Qt.PenCapStyle.RoundCap,Qt.PenJoinStyle.RoundJoin))
+            w = self.image.width()
+            h = self.image.height()
+            mid_w = w // 2
+            mid_h = h // 2
+            div = int(mid_w/ int(value)) #600/10
+           
+            
+            painter.drawLine(mid_h,0,mid_w,h )
+            painter.drawLine(0,mid_h,w,mid_h)
+            for x in range(0,div):
+                painter.drawLine(mid_w,div*x, (mid_w+ (div*x )),mid_h )
+                painter.drawLine(mid_h,div*x, (mid_h+ (div*x)),mid_w)
+        self.update()
+
+    def draw_EstrellaDoble(self, value):
+        self.clear()
+        with QPainter(self.image) as painter:
+            painter.setPen(QPen(QColor("#ff00000"),1,Qt.PenStyle.SolidLine,Qt.PenCapStyle.RoundCap,Qt.PenJoinStyle.RoundJoin))
+            w = self.image.width()
+            h = self.image.height()
+            mid_w = w // 2
+            mid_h = h // 2
+            div = int(mid_w/ int(value)) #600/10
+           
+            
+            painter.drawLine(mid_h,0,mid_w,h )
+            painter.drawLine(0,mid_h,w,mid_h)
+            for x in range(0,div):
+                painter.drawLine(mid_w,div*x, (mid_w+ (div*x )),mid_h )
+                painter.drawLine(mid_h,div*x, (mid_h+ (div*x)),mid_w)
+        self.update()
+
+    def draw_tablero(self, value):
+        self.clear()
+        with QPainter(self.image) as painter:
+            painter.setPen(QPen(QColor("#ff00000"),1,Qt.PenStyle.SolidLine,Qt.PenCapStyle.RoundCap,Qt.PenJoinStyle.RoundJoin))
+            w = self.image.width()
+            h = self.image.height()
+            mid_w = w // 2
+            mid_h = h // 2
+            div = int(mid_w/ int(value)) #600/10
+           
+            
+            painter.drawLine(mid_h,0,mid_w,h )
+            painter.drawLine(0,mid_h,w,mid_h)
+            for x in range(0,div):
+                painter.drawLine(mid_w,div*x, (mid_w+ (div*x )),mid_h )
+                painter.drawLine(mid_h,div*x, (mid_h+ (div*x)),mid_w)
+        self.update()
+
+    def draw_circulos(self, value):
         self.clear()
         with QPainter(self.image) as painter:
             painter.setPen(QPen(QColor("#ff00000"),1,Qt.PenStyle.SolidLine,Qt.PenCapStyle.RoundCap,Qt.PenJoinStyle.RoundJoin))
