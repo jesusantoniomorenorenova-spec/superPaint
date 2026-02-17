@@ -136,8 +136,32 @@ class Canvas(QWidget):
             painter.drawLine(mid_h,0,mid_w,h )
             painter.drawLine(0,mid_h,w,mid_h)
             for x in range(0,div):
-                painter.drawLine(mid_w,div*x, (mid_w+ (div*x )),mid_h )
-                painter.drawLine(mid_h,div*x, (mid_h+ (div*x)),mid_w)
+                
+                painter.drawLine(mid_w, (div*x) + mid_h, mid_w + (div*x), h)
+                painter.drawLine(mid_w, (div*x) + mid_h, mid_w - (div*x), h)
+
+                painter.drawLine(mid_w, mid_h - (div*x), mid_w + (div*x), 0)
+                painter.drawLine(mid_w, mid_h - (div*x), mid_w - (div*x), 0)
+
+                
+                painter.drawLine(mid_w - (div*x), mid_h, 0, mid_h + (div*x))
+                painter.drawLine(mid_w - (div*x), mid_h, 0, mid_h - (div*x))
+
+                painter.drawLine(mid_w + (div*x), mid_h, w, mid_h + (div*x))
+                painter.drawLine(mid_w + (div*x), mid_h, w, mid_h - (div*x))
+
+
+
+                
+
+
+
+
+                         
+                
+
+
+                
         self.update()
 
     def draw_EstrellaDoble(self, value):
