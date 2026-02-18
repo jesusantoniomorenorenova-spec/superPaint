@@ -139,14 +139,10 @@ class Canvas(QWidget):
                 
                 painter.drawLine(mid_w, (div*x) + mid_h, mid_w + (div*x), h)
                 painter.drawLine(mid_w, (div*x) + mid_h, mid_w - (div*x), h)
-
                 painter.drawLine(mid_w, mid_h - (div*x), mid_w + (div*x), 0)
                 painter.drawLine(mid_w, mid_h - (div*x), mid_w - (div*x), 0)
-
-                
                 painter.drawLine(mid_w - (div*x), mid_h, 0, mid_h + (div*x))
                 painter.drawLine(mid_w - (div*x), mid_h, 0, mid_h - (div*x))
-
                 painter.drawLine(mid_w + (div*x), mid_h, w, mid_h + (div*x))
                 painter.drawLine(mid_w + (div*x), mid_h, w, mid_h - (div*x))
 
@@ -177,43 +173,40 @@ class Canvas(QWidget):
             
             painter.drawLine(mid_h,0,mid_w,h )
             painter.drawLine(0,mid_h,w,mid_h)
-            for x in range(0,div):
-                painter.drawLine(mid_w,div*x, (mid_w+ (div*x )),mid_h )
-                painter.drawLine(mid_h,div*x, (mid_h+ (div*x)),mid_w)
+            for x in range(0,value):
+                painter.drawLine(mid_w,div*x, (mid_w+ (div*x )),mid_h)
+                painter.drawLine(mid_w,div*x, (mid_w- (div*x)),mid_h)
+                painter.drawLine(mid_w, h - (div*x), (mid_w + (div*x)), mid_h)
+                painter.drawLine(mid_w, h - (div*x), (mid_w - (div*x)), mid_h)
+
+                painter.drawLine(mid_w,div*x)
+
+
+                
+
+                
+            
+
+
+
+
+                
+
         self.update()
 
     def draw_tablero(self, value):
         self.clear()
         with QPainter(self.image) as painter:
-            painter.setPen(QPen(QColor("#ff00000"),1,Qt.PenStyle.SolidLine,Qt.PenCapStyle.RoundCap,Qt.PenJoinStyle.RoundJoin))
+            painter.setPen(Qt.PenStyle.NoPen)
             w = self.image.width()
             h = self.image.height()
-            mid_w = w // 2
-            mid_h = h // 2
-            div = int(mid_w/ int(value)) #600/10
-           
-            
-            painter.drawLine(mid_h,0,mid_w,h )
-            painter.drawLine(0,mid_h,w,mid_h)
-            for x in range(0,div):
-                painter.drawLine(mid_w,div*x, (mid_w+ (div*x )),mid_h )
-                painter.drawLine(mid_h,div*x, (mid_h+ (div*x)),mid_w)
-        self.update()
-
-    def draw_circulos(self, value):
-        self.clear()
-        with QPainter(self.image) as painter:
-            painter.setPen(QPen(QColor("#ff00000"),1,Qt.PenStyle.SolidLine,Qt.PenCapStyle.RoundCap,Qt.PenJoinStyle.RoundJoin))
-            w = self.image.width()
-            h = self.image.height()
-            mid_w = w // 2
-            mid_h = h // 2
-            div = int(mid_w/ int(value)) #600/10
-           
-            
-            painter.drawLine(mid_h,0,mid_w,h )
-            painter.drawLine(0,mid_h,w,mid_h)
-            for x in range(0,div):
-                painter.drawLine(mid_w,div*x, (mid_w+ (div*x )),mid_h )
-                painter.drawLine(mid_h,div*x, (mid_h+ (div*x)),mid_w)
-        self.update()
+            w_celda = int(w / int(value))
+            h_celda = int(h/int(value))
+            for fila in range(value):
+                for columna in range(value):
+                    if (fila + columna) % 2 == 0:
+                        painter.setBrush(QColor("#fff"))
+                    else:
+                        painter.setBrush(QColor("#000"))
+                    rect = QRectF(w_celda*columna,h_celda*fila,w_celda,h_celda)
+                    painter.drawRect(rect)
