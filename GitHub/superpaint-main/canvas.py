@@ -173,13 +173,24 @@ class Canvas(QWidget):
             
             painter.drawLine(mid_h,0,mid_w,h )
             painter.drawLine(0,mid_h,w,mid_h)
+            
+            painter.drawLine(0, 0, w, h)
+            painter.drawLine(w, 0, 0, h)
+
             for x in range(0,value):
                 painter.drawLine(mid_w,div*x, (mid_w+ (div*x )),mid_h)
                 painter.drawLine(mid_w,div*x, (mid_w- (div*x)),mid_h)
                 painter.drawLine(mid_w, h - (div*x), (mid_w + (div*x)), mid_h)
                 painter.drawLine(mid_w, h - (div*x), (mid_w - (div*x)), mid_h)
 
-                painter.drawLine(mid_w,div*x)
+                painter.drawLine(div*x, div*x,mid_w + (div*x), mid_h - (div*x))
+                painter.drawLine(div*x, div*x,mid_w - (div*x), mid_h + (div*x))
+                painter.drawLine(w - (div*x), h - (div*x),  mid_w + (div*x), mid_h - (div*x))
+                painter.drawLine(w - (div*x), h - (div*x),  mid_w - (div*x), mid_h + (div*x))
+
+
+
+
 
 
                 
